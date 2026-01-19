@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    val nettyVersion = "4.1.101.Final"
+    val nettyVersion = "4.2.9.Final"
     val log4jVersion = "2.25.3"
     val jlineVersion = "3.30.6"
     val protocolVersion = "3.0.0.Beta11-SNAPSHOT"
@@ -54,8 +54,8 @@ dependencies {
     implementation("org.cloudburstmc.protocol:bedrock-codec:$protocolVersion")
     implementation("org.cloudburstmc.protocol:bedrock-connection:$protocolVersion")
     implementation("org.cloudburstmc.netty:netty-transport-raknet:1.0.0.CR3-SNAPSHOT")
-
-    implementation("io.netty:netty-transport-native-epoll:$nettyVersion:linux-x86_64")
+    implementation("io.netty:netty-transport-native-kqueue:$nettyVersion")
+    implementation("io.netty:netty-transport-native-epoll:$nettyVersion")
     implementation("com.nimbusds:nimbus-jose-jwt:9.37.4")
 }
 
@@ -83,7 +83,6 @@ tasks.named<ShadowJar>("shadowJar") {
     )
 
     mergeServiceFiles()
-    relocate("org.bstats", "dev.waterdog")
 
     archiveFileName.set("${project.description}.jar")
 

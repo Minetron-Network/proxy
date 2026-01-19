@@ -46,7 +46,6 @@ import dev.waterdog.waterdogpe.scheduler.WaterdogScheduler;
 import dev.waterdog.waterdogpe.security.SecurityManager;
 import dev.waterdog.waterdogpe.utils.ConfigurationManager;
 import dev.waterdog.waterdogpe.utils.ThreadFactoryBuilder;
-import dev.waterdog.waterdogpe.utils.bstats.Metrics;
 import dev.waterdog.waterdogpe.utils.config.LangConfig;
 import dev.waterdog.waterdogpe.utils.config.proxy.NetworkSettings;
 import dev.waterdog.waterdogpe.utils.config.proxy.ProxyConfig;
@@ -218,12 +217,12 @@ public class ProxyServer {
                 version.setBedrockCodec(ProtocolCodecs.buildCodec(version.getDefaultCodec()));
             }
         }
-
+/*
         if (this.getConfiguration().isEnableAnonymousStatistics()) {
             this.getLogger().info("Enabling anonymous statistics.");
             Metrics.startMetrics(this, this.getConfiguration());
         }
-
+ */
         if (this.getConfiguration().enableResourcePacks()) {
             this.packManager.loadPacks(this.packsPath);
         }
@@ -337,10 +336,6 @@ public class ProxyServer {
         this.tickExecutor.shutdown();
         this.scheduler.shutdown();
         this.eventManager.getThreadedExecutor().shutdown();
-
-        if (Metrics.get() != null) {
-            Metrics.get().shutdown();
-        }
 
         try {
             for (Channel channel : this.serverChannels) {

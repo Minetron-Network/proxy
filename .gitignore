@@ -28,6 +28,9 @@ out/
 
 modules.xml
 
+build/
+.gradle
+
 # Maven files
 target/
 pom.xml.tag
