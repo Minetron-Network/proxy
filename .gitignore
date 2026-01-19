@@ -20,9 +20,6 @@
 # JentBrains
 .idea/*
 
-# Allow copyright files
-!.idea/copyright
-
 out/
 
 *.iml
