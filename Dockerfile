@@ -7,4 +7,4 @@ WORKDIR /home
 
 ADD target/Waterdog.jar /home
 
-ENTRYPOINT ["java", "-jar", "Waterdog.jar"]
+ENTRYPOINT ["java", "-jar", "bamboo-proxy.jar"]
